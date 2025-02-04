@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<h1>Welcome to User Dashboard</h1>
+<a th:href="@{dashboard/user/create}">Add new user</a>
+<table>
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Full Name</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th colspan="3">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="u,l : ${users}">
+        <td th:text="${l.index+1}"></td>
+        <td th:text="${u.fullName}"></td>
+        <td th:text="${u.username}"></td>
+        <td th:text="${u.role}"></td>
+        <td>
+            <span th:if="${u.status}">Active</span>
+            <span th:unless="${u.status}">Inactive</span>
+        </td>
+        <td><a>Detail</a></td>
+        <td><a>Remove</a></td>
+        <td><a>Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
