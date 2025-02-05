@@ -5,9 +5,54 @@
     <title>Add User</title>
 </head>
 <body>
-
+<h1>Create New User</h1>
 <form th:action="@{/dashboard/user/add}" method="post" th:object="${user}">
+    <!-- Username -->
+    <label for="username">Username</label><br>
+    <input type="text" id="username" th:field="*{username}"><br>
+    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 
+    <!-- Password -->
+    <label for="password">Password</label><br>
+    <input type="password" id="password" th:field="*{password}"><br>
+    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+
+    <!-- Email -->
+    <label for="email">Email</label><br>
+    <input type="email" id="email" th:field="*{email}"><br>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+    <!-- Phone -->
+    <label for="phone">Phone Number</label><br>
+    <input type="text" id="phone" th:field="*{phone}"><br>
+    <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+
+    <!-- Full Name -->
+    <label for="fullName">Full Name</label><br>
+    <input type="text" id="fullName" th:field="*{fullName}"><br>
+    <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></p>
+
+    <!-- Gender -->
+    <label>Gender</label><br>
+    <input type="radio" th:field="*{gender}" value="true">Female
+    <input type="radio" th:field="*{gender}" value="false">Male<br>
+    <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+
+    <!-- Address -->
+    <label for="address">Address</label><br>
+    <input type="text" id="address" th:field="*{address}"><br>
+    <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+
+    <!-- Role -->
+    <label for="role">Role</label><br>
+    <select id="role" th:field="*{role}">
+        <option value="" disabled selected>-- Role --</option>
+        <option th:each="role : ${roles}" th:value="${role}" th:text="${role}"></option>
+    </select><br>
+    <p th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></p>
+
+    <!-- Submit -->
+    <button type="submit" value="submit">Create User</button>
 </form>
 </body>
 </html>

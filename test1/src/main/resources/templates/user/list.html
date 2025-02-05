@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Welcome to User Dashboard</h1>
-<a th:href="@{dashboard/user/create}">Add new user</a>
+<a th:href="@{/dashboard/user/create}">Add new user</a>
 <table>
     <thead>
     <tr>
@@ -34,5 +34,9 @@
     </tr>
     </tbody>
 </table>
+<a th:if="${users.hasPrevious()}" th:href="@{/dashboard/user/list(page=${users.number-1})}">Previous</a>
+<span th:text="${(users.number+1)} + '/' + ${users.totalPages}"></span>
+
+<a th:if="${users.hasNext()}" th:href="@{/dashboard/user/list(page=${users.number+1})}">Next</a>
 </body>
 </html>
