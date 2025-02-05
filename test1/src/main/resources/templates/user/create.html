@@ -32,6 +32,11 @@
     <input type="text" id="fullName" th:field="*{fullName}"><br>
     <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></p>
 
+    <!-- Birthday-->
+    <label for="birthday">Birthday</label><br>
+    <input type="date" id="birthday" th:field="*{birthday}"><br>
+    <p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></p>
+
     <!-- Gender -->
     <label>Gender</label><br>
     <input type="radio" th:field="*{gender}" value="true">Female

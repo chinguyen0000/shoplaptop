@@ -1,5 +1,6 @@
 package com.example.test1.service;
 
+import com.example.test1.model.Role;
 import com.example.test1.model.User;
 import com.example.test1.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,17 @@ public class UserService implements IUserService {
 
     @Override
     public void save(User user) {
-        System.out.println("Before adding");
-        iUserRepository.save(user);
-        System.out.println("After adding");
+        try {
+            if (user.getRole() == null) {
+                user.setRole(Role.CUSTOMER);
+            }
+            user.setStatus(true);
+            //user.setPassword(encryptPasswordUtils.encryptPasswordUtils(user.getPassword()));
+            System.out.println("Before adding user");
+            iUserRepository.save(user);
+        } catch (Exception e) {
+            throw new RuntimeException("Có lỗi khi thêm người dùng : " + e.getMessage());
+        }
     }
 
     @Override

@@ -130,6 +130,23 @@ public class UserDTO implements Validator {
     }
 
     @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", gender=" + gender +
+                ", status=" + status +
+                ", role=" + role +
+                ", birthday=" + birthday +
+                '}';
+    }
+
+    @Override
     public boolean supports(Class<?> clazz) {
         return false;
     }

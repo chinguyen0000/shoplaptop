@@ -44,7 +44,7 @@ public class User {
 
     public User() {}
 
-    public User(int id, String username, String password, String fullName, String email, String phone, String address, boolean gender, boolean status, Role role, LocalDate birthday) {
+    public User(Integer id, String username, String password, String fullName, String email, String phone, String address, boolean gender, boolean status, Role role, LocalDate birthday) {
         this.id = id;
         this.username = username;
         this.password = password;

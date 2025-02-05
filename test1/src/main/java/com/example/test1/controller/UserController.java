@@ -50,7 +50,7 @@ public class UserController {
             model.addAttribute("user", userDTO);
             return "user/create";
         }
-        System.out.println("Before creating new User");
+        System.out.println("Before creating new User, userDTO is: " + userDTO);
         User newUser = new User();
         BeanUtils.copyProperties(userDTO, newUser);
         System.out.println("Mapping new user");
