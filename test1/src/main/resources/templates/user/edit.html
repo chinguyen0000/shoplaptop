@@ -2,14 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add User</title>
+    <title>Edit Page</title>
 </head>
 <body>
-<h1>Create New User</h1>
-<form th:action="@{/dashboard/user/add}" method="POST" th:object="${user}">
+<h2>Edit User</h2>
+<form th:action="@{/dashboard/user/update}" method="POST" th:object="${userDTO}">
+    <!--Id-->
+    <input type="hidden" th:field="*{id}"/>
     <!-- Username -->
     <label for="username">Username</label><br>
-    <input type="text" id="username" th:field="*{username}"><br>
+    <input type="text" id="username" th:field="*{username}" th:value="${userDTO.username}"><br>
     <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 
     <!-- Password -->
@@ -19,17 +21,17 @@
 
     <!-- Email -->
     <label for="email">Email</label><br>
-    <input type="email" id="email" th:field="*{email}"><br>
+    <input type="email" id="email" th:field="*{email}" th:value="${userDTO.email}"><br>
     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 
     <!-- Phone -->
     <label for="phone">Phone Number</label><br>
-    <input type="text" id="phone" th:field="*{phone}"><br>
+    <input type="text" id="phone" th:field="*{phone}" th:value="${userDTO.phone}"><br>
     <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
 
     <!-- Full Name -->
     <label for="fullName">Full Name</label><br>
-    <input type="text" id="fullName" th:field="*{fullName}"><br>
+    <input type="text" id="fullName" th:field="*{fullName}" th:value="${userDTO.fullName}"><br>
     <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></p>
 
     <!-- Birthday-->
@@ -45,7 +47,7 @@
 
     <!-- Address -->
     <label for="address">Address</label><br>
-    <input type="text" id="address" th:field="*{address}"><br>
+    <input type="text" id="address" th:field="*{address}" th:value="${userDTO.address}"><br>
     <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
 
     <!-- Role -->
@@ -56,8 +58,14 @@
     </select><br>
     <p th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></p>
 
+    <!-- Status -->
+    <label>Status</label><br>
+    <input type="radio" th:field="*{status}" value="true">Active
+    <input type="radio" th:field="*{status}" value="false">Inactive<br>
+    <p th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></p>
+
     <!-- Submit -->
-    <button type="submit" value="submit">Create User</button>
+    <button type="submit" value="submit">Update</button>
 </form>
 <a th:href="@{/dashboard/user/list}">Back to User dashboard</a>
 </body>

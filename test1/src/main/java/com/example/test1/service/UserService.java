@@ -26,7 +26,9 @@ public class UserService implements IUserService {
             if (user.getRole() == null) {
                 user.setRole(Role.CUSTOMER);
             }
-            user.setStatus(true);
+            if (user.getStatus() == null) {
+                user.setStatus(true);
+            }
             //user.setPassword(encryptPasswordUtils.encryptPasswordUtils(user.getPassword()));
             System.out.println("Before adding user");
             iUserRepository.save(user);
@@ -43,5 +45,15 @@ public class UserService implements IUserService {
     @Override
     public boolean existsByEmail(String email) {
         return iUserRepository.existsByEmail(email);
+    }
+
+    @Override
+    public User getById(Integer id) {
+        return iUserRepository.getById(id);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        iUserRepository.deleteById(id);
     }
 }

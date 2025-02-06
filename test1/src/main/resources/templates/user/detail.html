@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.fullName}"></title>
+</head>
+<body>
+<h2 th:text="'Hello ' + ${user.fullName}"></h2>
+<table>
+    <tr>
+        <td>Full Name</td>
+        <td th:text="${user.fullName}"></td>
+    </tr>
+    <tr>
+        <td>Username</td>
+        <td th:text="${user.username}"></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td th:text="${user.email}"></td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td th:text="${user.address}"></td>
+    </tr>
+    <tr>
+        <td>Phone Number</td>
+        <td th:text="${user.phone}"></td>
+    </tr>
+    <tr>
+        <td>Gender</td>
+        <td th:if="${user.gender}">Female</td>
+        <td th:unless="${user.gender}">Male</td>
+    </tr>
+    <tr>
+        <td>Date of birth</td>
+        <td th:text="${#temporals.format(user.birthday, 'dd-MM-yyyy')}"></td>
+    </tr>
+    <tr>
+        <td>Role</td>
+        <td th:text="${user.role}"></td>
+    </tr>
+    <tr>
+        <td>Account Status</td>
+        <td th:if="${user.id}">Active</td>
+        <td th:unless="${user.id}">Inactive</td>
+    </tr>
+</table>
+<a th:href="@{/dashboard/user/list}">Back to User dashboard</a>
+</body>
+</html>

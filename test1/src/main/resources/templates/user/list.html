@@ -28,15 +28,17 @@
             <span th:if="${u.status}">Active</span>
             <span th:unless="${u.status}">Inactive</span>
         </td>
-        <td><a>Detail</a></td>
-        <td><a>Remove</a></td>
-        <td><a>Edit</a></td>
+        <td><a th:href="@{/dashboard/user/{id}/detail(id=${u.id})}">Detail</a></td>
+        <td>
+            <a th:href="@{/dashboard/user/{id}/remove(id=${u.id})}"
+               th:onclick="return confirm('System will remove '+${u.fullName}+' permanently. Are you sure to remove ?')">Remove</a>
+        </td>
+        <td><a th:href="@{/dashboard/user/{id}/edit(id=${u.id})}">Edit</a></td>
     </tr>
     </tbody>
 </table>
 <a th:if="${users.hasPrevious()}" th:href="@{/dashboard/user/list(page=${users.number-1})}">Previous</a>
 <span th:text="${(users.number+1)} + '/' + ${users.totalPages}"></span>
-
 <a th:if="${users.hasNext()}" th:href="@{/dashboard/user/list(page=${users.number+1})}">Next</a>
 </body>
 </html>

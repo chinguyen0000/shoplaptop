@@ -11,4 +11,6 @@ public interface IUserService {
     void save(User user);
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
+    User getById(Integer id);
+    void deleteById(Integer id);
 }
